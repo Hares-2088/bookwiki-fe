@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-function App() {
+import Authors from "./pages/Authors";
+import Books from "./pages/Books"
+import AuthorBooks from "./pages/AuthorBooks"
+import HomePage from "./pages/HomePage"
+import MyNavBar from "./components/MyNavBar";
+import Book from "./pages/Book";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <ToastContainer />
+      <Router>
+        <MyNavBar />
+        <Routes>
+
+          <Route exact path="/" element={<HomePage />} />
+          <Route exact path="/books" element={<Books />} />
+          <Route exact path="/authors" element={<Authors />} />
+          <Route exact path="/authorbooks" element={<AuthorBooks />} />
+          <Route exact path="/bookdetails" element={<Book />} />
+
+        </Routes>
+
+      </Router>
+    </>
   );
 }
-
-export default App;
